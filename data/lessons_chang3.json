@@ -1,0 +1,62 @@
+[
+  {
+    "id": "c3_b16",
+    "title": "Bài 16: Đọc và Ghi File trong Python",
+    "theory": "### Lập trình làm việc với File\nSử dụng cú pháp `with open(...)` giúp tự động đóng file sau khi thao tác.\n\n```python\n# Ghi file ('w')\nwith open('test.txt', 'w', encoding='utf-8') as f:\n    f.write('Xin chào')\n\n# Đọc file ('r')\nwith open('test.txt', 'r', encoding='utf-8') as f:\n    content = f.read()\n```",
+    "initial_code": "with open('note.txt', 'w', encoding='utf-8') as f:\n    f.write('Python thiet la hay')\n\nwith open('note.txt', 'r', encoding='utf-8') as f:\n    print(f.read())\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Tạo file `note.txt`, ghi nội dung `Python thiet la hay` và đọc lại in ra màn hình.",
+      "expected_output": "Python thiet la hay\n"
+    }
+  },
+  {
+    "id": "c3_b17",
+    "title": "Bài 17: Khái niệm Lớp (Class) & Đối tượng (Object)",
+    "theory": "### Lập trình hướng đối tượng (OOP)\n- **Class (Lớp):** Bản thiết kế mẫu.\n- **Object (Đối tượng):** Thực thể được tạo từ Class.\n\n```python\nclass HocSinh:\n    pass\n\nhs1 = HocSinh()\n```",
+    "initial_code": "class HocSinh:\n    pass\n\nhs = HocSinh()\nhs.ten = 'Công'\nprint(hs.ten)\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Tạo lớp `HocSinh`, khởi tạo đối tượng `hs`, gán thuộc tính `hs.ten = 'Công'` và in thuộc tính `ten`.",
+      "expected_output": "Công\n"
+    }
+  },
+  {
+    "id": "c3_b18",
+    "title": "Bài 18: Phương thức khởi tạo __init__ & Thuộc tính",
+    "theory": "### Hàm khởi tạo `__init__`\nTự động chạy khi khởi tạo đối tượng để gán thuộc tính ban đầu.\n\n```python\nclass Person:\n    def __init__(self, name):\n        self.name = name\n```",
+    "initial_code": "class Person:\n    def __init__(self, name, age):\n        self.name = name\n        self.age = age\n\np = Person('Công', 37)\nprint(f'{p.name} - {p.age}')\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Khởi tạo đối tượng `p = Person('Công', 37)` và in ra dạng `Công - 37`.",
+      "expected_output": "Công - 37\n"
+    }
+  },
+  {
+    "id": "c3_b19",
+    "title": "Bài 19: Tính Đóng gói & Phương thức trong Class",
+    "theory": "### Phương thức (Method)\nLà hàm nằm bên trong Lớp, thao tác trên các thuộc tính của đối tượng qua biến `self`.",
+    "initial_code": "class HinhVuong:\n    def __init__(self, canh):\n        self.canh = canh\n    def tinh_dientich(self):\n        return self.canh * self.canh\n\nhv = HinhVuong(5)\nprint(hv.tinh_dientich())\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Tạo lớp `HinhVuong` với cạnh bằng 5, tính và in ra diện tích (bằng 25).",
+      "expected_output": "25\n"
+    }
+  },
+  {
+    "id": "c3_b20",
+    "title": "Bài 20: Tính Kế thừa (Inheritance) trong OOP",
+    "theory": "### Kế thừa\nLớp con tái sử dụng toàn bộ thuộc tính và phương thức từ Lớp cha.\n\n```python\nclass DongVat:\n    def keo(self):\n        print('Gâu gâu')\n\nclass Cho(DongVat):\n    pass\n```",
+    "initial_code": "class DongVat:\n    def tieng_keo(self):\n        return 'Gau gau'\n\nclass Cho(DongVat):\n    pass\n\nc = Cho()\nprint(c.tieng_keo())\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Tạo lớp `Cho` kế thừa từ `DongVat` và gọi phương thức `tieng_keo()` in ra `Gau gau`.",
+      "expected_output": "Gau gau\n"
+    }
+  },
+  {
+    "id": "c3_do_an",
+    "title": "Đồ án cuối chặng: Hệ thống Quản lý Học sinh",
+    "theory": "### Tổng kết Chặng 3\nXây dựng mô hình OOP hoàn chỉnh cho Học sinh.",
+    "initial_code": "class HocSinh:\n    def __init__(self, ten, diem):\n        self.ten = ten\n        self.diem = diem\n    def xep_loai(self):\n        return 'Gioi' if self.diem >= 8.0 else 'Kha'\n\nhs = HocSinh('Công', 8.5)\nprint(f'{hs.ten}: {hs.xep_loai()}')\n",
+    "exercise": {
+      "prompt": "**Thử thách Đồ án:** Khởi tạo `HocSinh('Công', 8.5)` và in ra dạng `Công: Gioi`.",
+      "expected_output": "Công: Gioi\n"
+    }
+  }
+]

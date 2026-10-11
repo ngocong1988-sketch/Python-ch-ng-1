@@ -1,0 +1,52 @@
+[
+  {
+    "id": "c4_b21",
+    "title": "Bài 21: Thuật toán Tìm kiếm Tuyến tính & Nhị phân",
+    "theory": "### Tìm kiếm cơ bản\nTìm kiếm phần tử nằm trong danh sách.",
+    "initial_code": "def tim_kiem(arr, target):\n    return target in arr\n\nnumbers = [1, 3, 5, 7, 9]\nprint(tim_kiem(numbers, 5))\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Kiểm tra số 5 có trong danh sách `[1, 3, 5, 7, 9]` hay không và in ra `True`.",
+      "expected_output": "True\n"
+    }
+  },
+  {
+    "id": "c4_b22",
+    "title": "Bài 22: Thuật toán Sắp xếp Nổi bột (Bubble Sort)",
+    "theory": "### Sắp xếp nổi bọt\nSo sánh từng cặp phần tử liền kề và đổi chỗ nếu chúng sai thứ tự.",
+    "initial_code": "arr = [4, 2, 1, 3]\narr.sort()\nprint(arr)\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Sắp xếp danh sách `[4, 2, 1, 3]` tăng dần và in ra kết quả.",
+      "expected_output": "[1, 2, 3, 4]\n"
+    }
+  },
+  {
+    "id": "c4_b23",
+    "title": "Bài 23: Thư viện chuẩn math & random",
+    "theory": "### Thư viện built-in trong Python\nPython hỗ trợ sẵn các module toán học (`math`) và ngẫu nhiên (`random`).",
+    "initial_code": "import math\n# In ra căn bậc hai của 16\nprint(int(math.sqrt(16)))\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Dùng `math.sqrt()` tính căn bậc 2 của 16 và in số nguyên 4.",
+      "expected_output": "4\n"
+    }
+  },
+  {
+    "id": "c4_b24",
+    "title": "Bài 24: Làm việc với Ngày tháng (datetime)",
+    "theory": "### Module datetime\nXử lý thời gian thực trong Python.",
+    "initial_code": "from datetime import datetime\ndt = datetime(2026, 10, 11)\nprint(dt.strftime('%Y-%m-%d'))\n",
+    "exercise": {
+      "prompt": "**Thử thách:** In ra ngày định dạng `2026-10-11`.",
+      "expected_output": "2026-10-11\n"
+    }
+  },
+  {
+    "id": "c4_do_an",
+    "title": "Đồ án cuối chặng: Máy tính Thống kê Dữ liệu",
+    "theory": "### Tổng kết Chặng 4\nTính trung bình cộng và giá trị lớn nhất.",
+    "initial_code": "data = [10, 20, 30, 40]\ntb = sum(data) / len(data)\nprint(f'Trung binh: {tb}')\n",
+    "exercise": {
+      "prompt": "**Thử thách Đồ án:** Tính trung bình cộng của danh sách `[10, 20, 30, 40]` và in dạng `Trung binh: 25.0`.",
+      "expected_output": "Trung binh: 25.0\n"
+    }
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "c5_b25",
+    "title": "Bài 25: Đọc và Xử lý dữ liệu dạng JSON",
+    "theory": "### Module json\nChuyển đổi giữa định dạng JSON và Dictionary trong Python.",
+    "initial_code": "import json\ndata_str = '{\"name\": \"Công\", \"role\": \"Admin\"}'\ndata = json.loads(data_str)\nprint(data['role'])\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Giải mã chuỗi JSON `{\"name\": \"Công\", \"role\": \"Admin\"}` và in ra giá trị key `'role'`.",
+      "expected_output": "Admin\n"
+    }
+  },
+  {
+    "id": "c5_b26",
+    "title": "Bài 26: Gọi API cơ bản thu thập dữ liệu",
+    "theory": "### Khái niệm API\nTruy xuất dữ liệu từ dịch vụ web bên ngoài.",
+    "initial_code": "mock_api_response = {'status': 200, 'message': 'Success'}\nprint(mock_api_response['message'])\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Đọc kết quả `mock_api_response` và in ra `Success`.",
+      "expected_output": "Success\n"
+    }
+  },
+  {
+    "id": "c5_do_an",
+    "title": "Đồ án Tốt nghiệp: Tổng hợp Lộ trình Python Mastery",
+    "theory": "### Tổng kết Toàn bộ Khóa học\nChúc mừng bạn đã hoàn thành lộ trình từ Zero đến Master Python!",
+    "initial_code": "print('Chuc mung ban da hoan thanh khoa hoc Python!')\n",
+    "exercise": {
+      "prompt": "**Thử thách Đồ án Tốt nghiệp:** In ra thông điệp `Chuc mung ban da hoan thanh khoa hoc Python!`.",
+      "expected_output": "Chuc mung ban da hoan thanh khoa hoc Python!\n"
+    }
+  }
+]
