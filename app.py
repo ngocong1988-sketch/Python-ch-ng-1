@@ -21,6 +21,10 @@ st.set_page_config(
     layout="wide"
 )
 
+# --- 1. KHỞI TẠO SESSION STATE LƯU TIẾN ĐỘ ---
+if "completed_lessons" not in st.session_state:
+    st.session_state.completed_lessons = set()
+
 # Danh sách cấu hình 5 chặng học
 STAGES = {
     "Chặng 1: Nhập môn & Cấu trúc cơ bản": "lessons_chang1.json",
@@ -30,7 +34,7 @@ STAGES = {
     "Chặng 5: Dự án thực tế & Định hướng": "lessons_chang5.json"
 }
 
-# Hàm tải dữ liệu bài học theo file JSON
+# Hàm tải dữ liệu bài học
 def load_lessons(json_filename):
     base_dir = os.path.dirname(os.path.abspath(__file__))
     data_dir = os.path.join(base_dir, "data")
@@ -45,7 +49,6 @@ def load_lessons(json_filename):
         except Exception:
             pass
             
-    # Trả về thông báo mẫu nếu chặng đó chưa có bài học
     return [
         {
             "id": "coming_soon",
@@ -67,28 +70,43 @@ st.divider()
 # --- SIDEBAR: CHỌN CHẶNG & BÀI HỌC ---
 st.sidebar.header("🎯 Lộ Trình Học Tập")
 
-# 1. Menu chọn Chặng
+# 1. Chọn Chặng học
 selected_stage_name = st.sidebar.selectbox(
     "Chọn Chặng học:",
     list(STAGES.keys())
 )
 
-# Tải bài học tương ứng với Chặng được chọn
 json_file = STAGES[selected_stage_name]
 lessons = load_lessons(json_file)
 
 st.sidebar.divider()
+
+# --- 2. HIỂN THỊ THANH TIẾN ĐỘ HỌC TẬP (PROGRESS BAR) ---
+total_lessons = len(lessons)
+completed_in_stage = sum(1 for l in lessons if l["id"] in st.session_state.completed_lessons)
+progress_percentage = completed_in_stage / total_lessons if total_lessons > 0 else 0.0
+
+st.sidebar.subheader("📊 Tiến độ Chặng")
+st.sidebar.progress(progress_percentage)
+st.sidebar.caption(f"Đã hoàn thành **{completed_in_stage}/{total_lessons}** bài học ({int(progress_percentage * 100)}%)")
+
+st.sidebar.divider()
 st.sidebar.header("📚 Danh sách bài học")
 
-# 2. Menu chọn Bài học trong Chặng
-lesson_titles = [f"{l['title']}" for l in lessons]
-selected_lesson = st.sidebar.radio(
+# --- 3. ĐÁNH DẤU ✅ VÀO DANH SÁCH BÀI HỌC ---
+lesson_options = []
+for l in lessons:
+    status_icon = "✅ " if l["id"] in st.session_state.completed_lessons else "📖 "
+    lesson_options.append(f"{status_icon}{l['title']}")
+
+selected_option = st.sidebar.radio(
     "Chọn bài học:",
-    lesson_titles,
+    lesson_options,
     index=0
 )
 
-current_idx = lesson_titles.index(selected_lesson)
+# Lấy chỉ số bài học đang chọn
+current_idx = lesson_options.index(selected_option)
 current_lesson = lessons[current_idx]
 
 # --- CHIA MÀN HÌNH THÀNH 2 CỘT ---
@@ -96,8 +114,11 @@ col_left, col_right = st.columns([1, 1], gap="large")
 
 # --- CỘT TRÁI: LÝ THUYẾT & ĐỀ BÀI ---
 with col_left:
+    # Hiển thị nhãn Hoàn thành nếu bài này đã làm xong
+    if current_lesson["id"] in st.session_state.completed_lessons:
+        st.success("🎉 Bạn đã hoàn thành bài học này!")
+        
     st.subheader(current_lesson["title"])
-    
     tab_theory, tab_exercise = st.tabs(["📖 Lý thuyết", "🎯 Bài tập thực hành"])
     
     with tab_theory:
@@ -143,7 +164,11 @@ with col_right:
         else:
             is_correct, msg = check_exercise(output, current_lesson["exercise"]["expected_output"])
             if is_correct:
+                # --- 4. TỰ ĐỘNG LƯU TIẾN ĐỘ KHI NỘP ĐÚNG ---
+                st.session_state.completed_lessons.add(current_lesson["id"])
                 st.success(msg)
                 st.balloons()
+                # Tải lại trang nhẹ để cập nhật icon ✅ trên Sidebar
+                st.rerun()
             else:
                 st.warning(msg)
