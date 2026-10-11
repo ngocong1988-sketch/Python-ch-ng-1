@@ -1,0 +1,86 @@
+[
+  {
+    "id": "c2_b9",
+    "title": "Bài 9: Danh sách (List) & Thao tác mảng cơ bản",
+    "theory": "### 1. Khái niệm List\nList dùng để lưu trữ nhiều giá trị trong cùng một biến. Các phần tử được bao bởi dấu `[]` và phân cách bằng dấu phẩy `,`.\n\n### 2. Chỉ số (Index)\n- Chỉ số bắt đầu từ `0` (phần tử đầu tiên).\n- Chỉ số âm `-1` đại diện cho phần tử cuối cùng.\n\n### 3. Ví dụ:\n```python\ntrai_cay = ['táo', 'chuối', 'cam']\nprint(trai_cay[0])   # In ra: táo\nprint(len(trai_cay)) # In ra độ dài: 3\n```",
+    "initial_code": "mon_hoc = ['Toán', 'Văn', 'Tin học']\n# In ra môn học thứ 3 (index 2) trong danh sách\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Cho danh sách `mon_hoc = ['Toán', 'Văn', 'Tin học']`. Hãy in ra phần tử `'Tin học'`.",
+      "expected_output": "Tin học\n"
+    }
+  },
+  {
+    "id": "c2_b10",
+    "title": "Bài 10: Phương thức xử lý List & Lát cắt (Slicing)",
+    "theory": "### 1. Các phương thức phổ biến:\n- `append(x)`: Thêm phần tử `x` vào cuối List.\n- `remove(x)`: Xóa phần tử `x` đầu tiên tìm thấy.\n- `sort()`: Sắp xếp List tăng dần.\n\n### 2. Cắt List (Slicing):\n`list[start:stop]` lấy các phần tử từ chỉ số `start` đến `stop - 1`.\n\n```python\nso = [1, 2, 3]\nso.append(4) # [1, 2, 3, 4]\n```",
+    "initial_code": "numbers = [5, 2, 8, 1]\n# Sắp xếp danh sách numbers tăng dần và in ra danh sách\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Cho `numbers = [5, 2, 8, 1]`. Hãy dùng phương thức `.sort()` để sắp xếp tăng dần và in danh sách kết quả.",
+      "expected_output": "[1, 2, 5, 8]\n"
+    }
+  },
+  {
+    "id": "c2_b11",
+    "title": "Bài 11: Bộ dữ liệu Tuple & Tập hợp Set",
+    "theory": "### 1. Tuple `()`\nTương tự List nhưng **không thể thay đổi** (immutable) sau khi tạo.\n\n### 2. Set `{}`\nTập hợp chứa các phần tử **không trùng lặp** và không có thứ tự.\n\n```python
+# Lọc bỏ trùng lặp trong List bằng Set
+danh_sach = [1, 2, 2, 3, 3, 3]
+duy_nhat = set(danh_sach) # {1, 2, 3}
+```",
+    "initial_code": "data = [10, 20, 20, 30, 10]\n# Chuyển data thành set để loại bỏ phần tử trùng lặp và in ra kết quả\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Cho `data = [10, 20, 20, 30, 10]`. Hãy dùng `set()` để loại bỏ trùng lặp và in tập hợp kết quả.",
+      "expected_output": "{10, 20, 30}\n"
+    }
+  },
+  {
+    "id": "c2_b12",
+    "title": "Bài 12: Từ điển (Dictionary) Key-Value",
+    "theory": "### Dictionary `{key: value}`\nLưu trữ dữ liệu theo cặp khóa - giá trị.\n\n### Cách truy cập và thêm mới:\n```python\nhoc_sinh = {'ten': 'Nam', 'diem': 9}\nprint(hoc_sinh['ten']) # In ra: Nam\nhoc_sinh['lop'] = '8A' # Thêm cặp key-value mới\n```",
+    "initial_code": "person = {'name': 'Công', 'job': 'Giáo viên'}\n# In ra giá trị của key 'job'\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Cho `person = {'name': 'Công', 'job': 'Giáo viên'}`. Hãy in ra nghề nghiệp (`job`) của người này.",
+      "expected_output": "Giáo viên\n"
+    }
+  },
+  {
+    "id": "c2_b13",
+    "title": "Bài 13: Hàm (Function) & Tham số truyền vào",
+    "theory": "### Định nghĩa hàm với `def`\nHàm giúp đóng gói đoạn code để tái sử dụng nhiều lần.\n\n```python\ndef xin_chao(ten):\n    print(f'Xin chào {ten}!')\n\nxin_chao('An') # Gọi hàm\n```",
+    "initial_code": "def chao_mung(ten):\n    # Viết code in ra: Chào mừng [ten] đến với Python!\n    pass\n\nchao_mung('Công')\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Định nghĩa hàm `chao_mung(ten)` in ra dòng chữ `Chào mừng Công đến với Python!` khi gọi `chao_mung('Công')`.",
+      "expected_output": "Chào mừng Công đến với Python!\n"
+    }
+  },
+  {
+    "id": "c2_b14",
+    "title": "Bài 14: Giá trị trả về (return) trong Hàm",
+    "theory": "### Từ khóa `return`\n Dùng để trả về kết quả từ hàm cho nơi gọi nó sử dụng tiếp.\n\n```python\ndef tinh_tong(a, b):\n    return a + b\n\nkq = tinh_tong(5, 3) # kq = 8\n```",
+    "initial_code": "def tinh_binh_phuong(n):\n    # Trả về bình phương của n (n * n)\n    pass\n\nprint(tinh_binh_phuong(4))\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Hoàn thiện hàm `tinh_binh_phuong(n)` trả về giá trị $n^2$. Khi gọi với $n = 4$ sẽ trả về `16`.",
+      "expected_output": "16\n"
+    }
+  },
+  {
+    "id": "c2_b15",
+    "title": "Bài 15: Xử lý lỗi & Ngoại lệ (try - except)",
+    "theory": "### Khối lệnh `try - except`\nGiúp chương trình không bị crash khi gặp dữ liệu vào bị lỗi.\n\n```python\ntry:\n    so = int('abc') # Lỗi ép kiểu\nexcept ValueError:\n    print('Lỗi: Không phải số nguyên!')\n```",
+    "initial_code": "try:\n    x = 10 / 0\nexcept ZeroDivisionError:\n    # In ra: Không thể chia cho 0!\n    pass\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Dùng `except ZeroDivisionError:` để bắt lỗi chia cho 0 và in ra thông báo: `Không thể chia cho 0!`.",
+      "expected_output": "Không thể chia cho 0!\n"
+    }
+  },
+  {
+    "id": "c2_do_an",
+    "title": "Đồ án cuối chặng: Quản lý Danh bạ Điện thoại",
+    "theory": "### Tổng kết Chặng 2\nÁp dụng List, Dictionary và Hàm để quản lý danh bạ nhỏ.\n\n```python\ndanh_ba = [\n    {'ten': 'An', 'sdt': '0901234567'},\n    {'ten': 'Bình', 'sdt': '0987654321'}\n]\n```",
+    "initial_code": "danh_ba = {'Công': '0912345678', 'Trang': '0987654321'}\n\ndef tim_sdt(ten):\n    # Tra cứu số điện thoại theo tên trong từ điển danh_ba và in ra kết quả\n    pass\n\ntim_sdt('Công')\n",
+    "exercise": {
+      "prompt": "**Thử thách Đồ án:** Hoàn thành hàm `tim_sdt(ten)` để in ra số điện thoại của `'Công'` từ dictionary `danh_ba`.",
+      "expected_output": "0912345678\n"
+    }
+  }
+]
