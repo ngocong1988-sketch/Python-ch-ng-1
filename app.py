@@ -3,52 +3,38 @@ import json
 import os
 from coder_engine import execute_user_code, check_exercise
 
+# Tắt cảnh báo dịch tự động của trình duyệt
+st.markdown(
+    """
+    <html lang="vi" class="notranslate" translate="no">
+    <head>
+        <meta name="google" content="notranslate" />
+    </head>
+    """,
+    unsafe_allow_html=True
+)
+
 # Cấu hình trang Streamlit
 st.set_page_config(
-    page_title="App Học Python - Chặng 1",
+    page_title="App Học Python - Từ Zero Đến Thành Thạo",
     page_icon="🐍",
     layout="wide"
 )
 
-# Dữ liệu dự phòng nếu không tìm thấy file JSON
-DEFAULT_LESSONS = [
-    {
-        "id": "bai_1",
-        "title": "Bài 1: Chào mừng tới Python & Chương trình đầu tiên",
-        "theory": "### 1. Hàm `print()`\nHàm `print()` dùng để xuất dữ liệu ra màn hình.\n\n### 2. Ví dụ:\n```python\nprint('Xin chào thế giới!')\n```\n\n### 3. Quy tắc:\n- Phân biệt chữ hoa/chữ thường (`print` khác `Print`).\n- Chuỗi văn bản phải đặt trong cặp dấu ngoặc đơn `''` hoặc ngoặc kép `\"\"`.",
-        "initial_code": "# Viết code của bạn ở đây\n",
-        "exercise": {
-            "prompt": "**Thử thách:** Dùng hàm `print()` để in ra chính xác dòng chữ: `Chào mừng bạn đến với Python!`",
-            "expected_output": "Chào mừng bạn đến với Python!\n"
-        }
-    },
-    {
-        "id": "bai_2",
-        "title": "Bài 2: Biến & Các kiểu dữ liệu cơ bản",
-        "theory": "### 1. Biến (Variable)\nBiến là hộp chứa dữ liệu. Khai báo biến bằng cách gán giá trị: `ten_bien = gia_tri`.\n\n### 2. Các kiểu dữ liệu cơ bản:\n- `int`: Số nguyên (VD: `age = 25`)\n- `float`: Số thực (VD: `gpa = 8.5`)\n- `str`: Chuỗi ký tự (VD: `name = 'Công'`)\n- `bool`: Đúng/Sai (`True` hoặc `False`)",
-        "initial_code": "# Tạo biến name và age\nname = 'Công'\nage = 37\nprint(name)\nprint(age)\n",
-        "exercise": {
-            "prompt": "**Thử thách:** Tạo biến `so_a = 10` và `so_b = 20`. In ra tổng của 2 số này.",
-            "expected_output": "30\n"
-        }
-    },
-    {
-        "id": "bai_3",
-        "title": "Bài 3: Định dạng chuỗi với f-string",
-        "theory": "### f-string trong Python\nf-string giúp ghép biến vào chuỗi dễ dàng bằng cách đặt chữ `f` trước dấu ngoặc bọc chuỗi và đặt tên biến trong `{}`.\n\n### Ví dụ:\n```python\nten = 'Nam'\ntuoi = 15\nprint(f'{ten} năm nay {tuoi} tuổi.')\n```",
-        "initial_code": "mon_hoc = 'Python'\ndiem = 10\n# In ra: Môn Python đạt 10 điểm!\n",
-        "exercise": {
-            "prompt": "**Thử thách:** Dùng f-string in ra chuỗi: `Môn Python đạt 10 điểm!` dựa trên 2 biến `mon_hoc = 'Python'` và `diem = 10`.",
-            "expected_output": "Môn Python đạt 10 điểm!\n"
-        }
-    }
-]
+# Danh sách cấu hình 5 chặng học
+STAGES = {
+    "Chặng 1: Nhập môn & Cấu trúc cơ bản": "lessons_chang1.json",
+    "Chặng 2: Cấu trúc dữ liệu & Hàm": "lessons_chang2.json",
+    "Chặng 3: OOP & Xử lý File": "lessons_chang3.json",
+    "Chặng 4: Thuật toán & Thư viện": "lessons_chang4.json",
+    "Chặng 5: Dự án thực tế & Định hướng": "lessons_chang5.json"
+}
 
-# Hàm tải dữ liệu bài học an toàn
-# Bỏ dòng @st.cache_data để ứng dụng luôn đọc file mới nhất
-def load_lessons():
+# Hàm tải dữ liệu bài học theo file JSON
+def load_lessons(json_filename):
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    json_path = os.path.join(base_dir, "data", "lessons_chang1.json")
+    data_dir = os.path.join(base_dir, "data")
+    json_path = os.path.join(data_dir, json_filename)
     
     if os.path.exists(json_path):
         try:
@@ -56,25 +42,46 @@ def load_lessons():
                 data = json.load(f)
                 if data:
                     return data
-        except Exception as e:
-            st.error(f"Lỗi đọc file JSON: {e}")
+        except Exception:
+            pass
             
-    # Báo lỗi nếu không đọc được file JSON thay vì tự trả về 3 bài mẫu
-    st.error(f"Không tìm thấy file bài học tại: {json_path}")
-    return []
-
-lessons = load_lessons()
+    # Trả về thông báo mẫu nếu chặng đó chưa có bài học
+    return [
+        {
+            "id": "coming_soon",
+            "title": "Nội dung đang được cập nhật",
+            "theory": "### 🚀 Chặng học này đang được biên soạn!\nBạn vui lòng quay lại sau hoặc chọn Chặng khác ở thanh menu bên trái.",
+            "initial_code": "# Code mẫu\nprint('Nội dung sắp ra mắt!')\n",
+            "exercise": {
+                "prompt": "**Thử thách:** In ra dòng chữ `Nội dung sắp ra mắt!`",
+                "expected_output": "Nội dung sắp ra mắt!\n"
+            }
+        }
+    ]
 
 # --- HEADER APP ---
 st.title("🐍 Ứng Dụng Học Python Từ Zero Đến Thành Thạo")
-st.caption("Chặng 1: Nhập môn & Cấu trúc cơ bản")
+st.caption("Hệ thống bài học tương tác & chấm điểm tự động")
 st.divider()
 
-# --- SIDEBAR: DANH SÁCH BÀI HỌC ---
-st.sidebar.header("📚 Danh sách bài học")
-lesson_titles = [f"{i+1}. {l['title']}" for i, l in enumerate(lessons)]
+# --- SIDEBAR: CHỌN CHẶNG & BÀI HỌC ---
+st.sidebar.header("🎯 Lộ Trình Học Tập")
 
-# Quản lý bài học chọn
+# 1. Menu chọn Chặng
+selected_stage_name = st.sidebar.selectbox(
+    "Chọn Chặng học:",
+    list(STAGES.keys())
+)
+
+# Tải bài học tương ứng với Chặng được chọn
+json_file = STAGES[selected_stage_name]
+lessons = load_lessons(json_file)
+
+st.sidebar.divider()
+st.sidebar.header("📚 Danh sách bài học")
+
+# 2. Menu chọn Bài học trong Chặng
+lesson_titles = [f"{l['title']}" for l in lessons]
 selected_lesson = st.sidebar.radio(
     "Chọn bài học:",
     lesson_titles,
@@ -107,7 +114,7 @@ with col_right:
         "Viết code Python của bạn tại đây:",
         value=current_lesson["initial_code"],
         height=220,
-        key=f"editor_{current_lesson['id']}"
+        key=f"editor_{selected_stage_name}_{current_lesson['id']}"
     )
     
     col_btn1, col_btn2 = st.columns(2)
