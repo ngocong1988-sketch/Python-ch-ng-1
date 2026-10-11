@@ -1,0 +1,92 @@
+[
+  {
+    "id": "bai_1",
+    "title": "Bài 1: Chào mừng tới Python & Chương trình đầu tiên",
+    "theory": "### 1. Hàm `print()`\nHàm `print()` dùng để xuất dữ liệu ra màn hình.\n\n### 2. Ví dụ:\n```python\nprint('Xin chào thế giới!')\n```\n\n### 3. Quy tắc:\n- Phân biệt chữ hoa/chữ thường (`print` khác `Print`).\n- Chuỗi văn bản phải đặt trong cặp dấu ngoặc đơn `''` hoặc ngoặc kép `\"\"`.",
+    "initial_code": "# Viết code của bạn ở đây\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Dùng hàm `print()` để in ra chính xác dòng chữ: `Chào mừng bạn đến với Python!`",
+      "expected_output": "Chào mừng bạn đến với Python!\n"
+    }
+  },
+  {
+    "id": "bai_2",
+    "title": "Bài 2: Biến & Các kiểu dữ liệu cơ bản",
+    "theory": "### 1. Biến (Variable)\nBiến là hộp chứa dữ liệu. Khai báo biến bằng cách gán giá trị: `ten_bien = gia_tri`.\n\n### 2. Các kiểu dữ liệu cơ bản:\n- `int`: Số nguyên (VD: `age = 25`)\n- `float`: Số thực (VD: `gpa = 8.5`)\n- `str`: Chuỗi ký tự (VD: `name = 'Công'`)\n- `bool`: Đúng/Sai (`True` hoặc `False`)",
+    "initial_code": "# Tạo biến so_a và so_b\nso_a = 10\nso_b = 20\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Tạo biến `so_a = 10` và `so_b = 20`. In ra tổng của 2 số này.",
+      "expected_output": "30\n"
+    }
+  },
+  {
+    "id": "bai_3",
+    "title": "Bài 3: Định dạng chuỗi với f-string",
+    "theory": "### f-string trong Python\nf-string giúp ghép biến vào chuỗi dễ dàng bằng cách đặt chữ `f` trước dấu ngoặc bọc chuỗi và đặt tên biến trong `{}`.\n\n### Ví dụ:\n```python\nten = 'Nam'\ntuoi = 15\nprint(f'{ten} năm nay {tuoi} tuổi.')\n```",
+    "initial_code": "mon_hoc = 'Python'\ndiem = 10\n# In ra: Môn Python đạt 10 điểm!\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Dùng f-string in ra chuỗi: `Môn Python đạt 10 điểm!` dựa trên 2 biến `mon_hoc = 'Python'` và `diem = 10`.",
+      "expected_output": "Môn Python đạt 10 điểm!\n"
+    }
+  },
+  {
+    "id": "bai_4",
+    "title": "Bài 4: Các phép toán cơ bản & Thao tác số học",
+    "theory": "### Các phép toán cơ bản:\n- `+`, `-`, `*`, `/` (chia số thực)\n- `//`: Chia lấy phần nguyên (VD: `7 // 2` bằng `3`)\n- `%`: Chia lấy phần dư (VD: `7 % 2` bằng `1`)\n- `**`: Lũy thừa (VD: `2 ** 3` bằng `8`)",
+    "initial_code": "a = 15\nb = 4\n# In ra phần dư của phép chia a cho b\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Cho `a = 15` và `b = 4`. Dùng phép chia lấy dư `%` để in ra phần dư khi chia `a` cho `b`.",
+      "expected_output": "3\n"
+    }
+  },
+  {
+    "id": "bai_5",
+    "title": "Bài 5: Cấu trúc điều kiện (if - elif - else)",
+    "theory": "### Cấu trúc rẽ nhánh:\n```python\nif dieu_kien:\n    # Thực hiện nếu True\nelif dieu_kien_2:\n    # Thực hiện nếu điều kiện 2 True\nelse:\n    # Thực hiện nếu tất cả False\n```\n*Lưu ý:* Code bên trong mệnh đề phải thụt lề 4 khoảng trắng.",
+    "initial_code": "diem = 8.5\n# Viết câu lệnh kiểm tra nếu diem >= 5 thì in 'Đạt', ngược lại in 'Chưa đạt'\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Viết cấu trúc `if - else` kiểm tra biến `diem = 8.5`. Nếu `diem >= 5` thì in ra `Đạt`, ngược lại in `Chưa đạt`.",
+      "expected_output": "Đạt\n"
+    }
+  },
+  {
+    "id": "bai_6",
+    "title": "Bài 6: Toán tử logic & So sánh nâng cao",
+    "theory": "### Toán tử logic:\n- `and`: Đúng khi CẢ HAI điều kiện đúng.\n- `or`: Đúng khi BẤT KỲ điều kiện nào đúng.\n- `not`: Phủ định giá trị logic (`not True` thành `False`).",
+    "initial_code": "tuoi = 20\nco_the = True\n# Kiểm tra tuổi >= 18 AND co_the == True thì in 'Đủ điều kiện'\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Kiểm tra nếu `tuoi >= 18` AND `co_the == True` thì in `Đủ điều kiện`.",
+      "expected_output": "Đủ điều kiện\n"
+    }
+  },
+  {
+    "id": "bai_7",
+    "title": "Bài 7: Vòng lặp với số lần biết trước (for)",
+    "theory": "### Cú pháp vòng lặp `for` với `range()`:\n```python\nfor i in range(1, 5):\n    print(i)  # In ra 1, 2, 3, 4\n```\nHàm `range(start, stop)` sẽ chạy từ `start` đến `stop - 1`.",
+    "initial_code": "# Dùng vòng lặp for in các số từ 1 đến 5\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Dùng vòng lặp `for` và `range()` để in ra các số từ `1` đến `5` (mỗi số trên 1 dòng).",
+      "expected_output": "1\n2\n3\n4\n5\n"
+    }
+  },
+  {
+    "id": "bai_8",
+    "title": "Bài 8: Vòng lặp điều kiện (while) & break/continue",
+    "theory": "### Vòng lặp `while`:\nChạy lặp đi lặp lại chừng nào điều kiện vẫn còn `True`.\n- `break`: Thoát ngay khỏi vòng lặp.\n- `continue`: Bỏ qua lượt hiện tại và chuyển sang lượt lặp tiếp theo.",
+    "initial_code": "i = 1\nwhile i <= 3:\n    print(i)\n    i += 1\n",
+    "exercise": {
+      "prompt": "**Thử thách:** Sử dụng vòng lặp `while` để in ra các số từ `1` đến `3`.",
+      "expected_output": "1\n2\n3\n"
+    }
+  },
+  {
+    "id": "do_an_1",
+    "title": "Đồ án cuối chặng: Máy tính tính cước Taxi",
+    "theory": "### Tổng kết Chặng 1\nÁp dụng biến, phép toán, `if-else` và `f-string` để làm bài toán tính tiền Taxi thực tế:\n- 1 km đầu tiên: 15,000 đ\n- Từ km thứ 2 trở đi: 12,000 đ/km",
+    "initial_code": "so_km = 5\n# Tính tổng tiền cước taxi cho 5km và in ra kết quả\n",
+    "exercise": {
+      "prompt": "**Thử thách Đồ án:** Cho `so_km = 5`. Hãy tính tổng tiền cước Taxi (1km đầu = 15000, 4km sau = 4 * 12000 = 48000). In ra chính xác tổng số tiền.",
+      "expected_output": "63000\n"
+    }
+  }
+]
