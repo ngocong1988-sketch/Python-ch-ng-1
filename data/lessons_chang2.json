@@ -22,11 +22,7 @@
   {
     "id": "c2_b11",
     "title": "Bài 11: Bộ dữ liệu Tuple & Tập hợp Set",
-    "theory": "### 1. Tuple `()`\nTương tự List nhưng **không thể thay đổi** (immutable) sau khi tạo.\n\n### 2. Set `{}`\nTập hợp chứa các phần tử **không trùng lặp** và không có thứ tự.\n\n```python
-# Lọc bỏ trùng lặp trong List bằng Set
-danh_sach = [1, 2, 2, 3, 3, 3]
-duy_nhat = set(danh_sach) # {1, 2, 3}
-```",
+    "theory": "### 1. Tuple `()`\nTương tự List nhưng **không thể thay đổi** (immutable) sau khi tạo.\n\n### 2. Set `{}`\nTập hợp chứa các phần tử **không trùng lặp** và không có thứ tự.\n\n```python\ndanh_sach = [1, 2, 2, 3, 3, 3]\nduy_nhat = set(danh_sach) # {1, 2, 3}\n```",
     "initial_code": "data = [10, 20, 20, 30, 10]\n# Chuyển data thành set để loại bỏ phần tử trùng lặp và in ra kết quả\n",
     "exercise": {
       "prompt": "**Thử thách:** Cho `data = [10, 20, 20, 30, 10]`. Hãy dùng `set()` để loại bỏ trùng lặp và in tập hợp kết quả.",
@@ -56,10 +52,10 @@ duy_nhat = set(danh_sach) # {1, 2, 3}
   {
     "id": "c2_b14",
     "title": "Bài 14: Giá trị trả về (return) trong Hàm",
-    "theory": "### Từ khóa `return`\n Dùng để trả về kết quả từ hàm cho nơi gọi nó sử dụng tiếp.\n\n```python\ndef tinh_tong(a, b):\n    return a + b\n\nkq = tinh_tong(5, 3) # kq = 8\n```",
+    "theory": "### Từ khóa `return`\nDùng để trả về kết quả từ hàm cho nơi gọi nó sử dụng tiếp.\n\n```python\ndef tinh_tong(a, b):\n    return a + b\n\nkq = tinh_tong(5, 3) # kq = 8\n```",
     "initial_code": "def tinh_binh_phuong(n):\n    # Trả về bình phương của n (n * n)\n    pass\n\nprint(tinh_binh_phuong(4))\n",
     "exercise": {
-      "prompt": "**Thử thách:** Hoàn thiện hàm `tinh_binh_phuong(n)` trả về giá trị $n^2$. Khi gọi với $n = 4$ sẽ trả về `16`.",
+      "prompt": "**Thử thách:** Hoàn thiện hàm `tinh_binh_phuong(n)` trả về giá trị n^2. Khi gọi với n = 4 sẽ trả về `16`.",
       "expected_output": "16\n"
     }
   },
@@ -76,7 +72,7 @@ duy_nhat = set(danh_sach) # {1, 2, 3}
   {
     "id": "c2_do_an",
     "title": "Đồ án cuối chặng: Quản lý Danh bạ Điện thoại",
-    "theory": "### Tổng kết Chặng 2\nÁp dụng List, Dictionary và Hàm để quản lý danh bạ nhỏ.\n\n```python\ndanh_ba = [\n    {'ten': 'An', 'sdt': '0901234567'},\n    {'ten': 'Bình', 'sdt': '0987654321'}\n]\n```",
+    "theory": "### Tổng kết Chặng 2\nÁp dụng List, Dictionary và Hàm để quản lý danh bạ nhỏ.\n\n```python\ndanh_ba = [{'ten': 'An', 'sdt': '0901234567'}, {'ten': 'Bình', 'sdt': '0987654321'}]\n```",
     "initial_code": "danh_ba = {'Công': '0912345678', 'Trang': '0987654321'}\n\ndef tim_sdt(ten):\n    # Tra cứu số điện thoại theo tên trong từ điển danh_ba và in ra kết quả\n    pass\n\ntim_sdt('Công')\n",
     "exercise": {
       "prompt": "**Thử thách Đồ án:** Hoàn thành hàm `tim_sdt(ten)` để in ra số điện thoại của `'Công'` từ dictionary `danh_ba`.",
